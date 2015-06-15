@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>3.8</ProductVersion>
+    <ProductVersion>3.9</ProductVersion>
     <ProjectGuid>de8a6f9b-8374-4fba-a9d1-75a447c199da</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
     <OutputName>Setup</OutputName>
@@ -25,15 +25,21 @@
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
     <Content Include="Transforms\Files.xsl" />
     <Content Include="Variables.wxi" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Transforms" />
   </ItemGroup>
+  <PropertyGroup>
+    <WixToolPath>$(SolutionDir)packages\WiX.Toolset.3.9.1208.0\tools\wix\</WixToolPath>
+    <WixTargetsPath>$(WixToolPath)wix.targets</WixTargetsPath>
+    <WixTasksPath>$(WixToolPath)WixTasks.dll</WixTasksPath>
+  </PropertyGroup>
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
-    <PreBuildEvent>"%25WIX%25\bin\heat.exe" dir "$(SolutionDir)\Out\$(Configuration)\HelloWorld" -t  "$(ProjectDir)Transforms\Files.xsl" -o "$(ProjectDir)OutputFiles.wxs" -gg –sfrag</PreBuildEvent>
+    <PreBuildEvent />
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
