@@ -4,13 +4,13 @@
     <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
 
     <PropertyGroup>
-        <ProductInfo>Tengu</ProductInfo>
-        <CompanyInfo>InfoTeCS</CompanyInfo>
-        <CopyrightInfo>Copyright 2015 InfoTeCS</CopyrightInfo>
-        <TradeMarkInfo>Tengu</TradeMarkInfo>
+        <ProductInfo>HelloWorld</ProductInfo>
+        <CompanyInfo>Company</CompanyInfo>
+        <CopyrightInfo>Copyright 2015</CopyrightInfo>
+        <TradeMarkInfo>HelloWorld</TradeMarkInfo>
         <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
         <Platform Condition="'$(Platform)' == ''">Any CPU</Platform>
-        <AssemblyInformationalVersion Condition="'$(BUILD_NUMBER)' == ''">Compiled By $(USERNAME)</AssemblyInformationalVersion>
+        <AssemblyInformationalVersion Condition="'$(BUILD_NUMBER)' == ''">Compiled By X</AssemblyInformationalVersion>
         <BUILD_NUMBER Condition="'$(BUILD_NUMBER)' == ''">0.0.0.0</BUILD_NUMBER>
 		<DefineConstants Condition=" '$(DefineConstants)'==''" ></DefineConstants>
     </PropertyGroup>
@@ -23,7 +23,7 @@
 
     <Target Name="Version">
         <AssemblyInfo CodeLanguage="CS"
-                      OutputFile="$(MSBuildProjectDirectory)\GlobalAssemblyInfo.cs"
+                      OutputFile="$(MSBuildProjectDirectory)\..\Sources\GlobalAssemblyInfo.cs"
                       AssemblyProduct="$(ProductInfo)"
                       AssemblyCompany="$(CompanyInfo)"
                       AssemblyCopyright="$(CopyrightInfo)"
@@ -35,6 +35,6 @@
     </Target>
 
     <ItemGroup>
-        <Solution Include="Bianca.sln" />
+        <Solution Include="..\HelloWorld.sln" />
     </ItemGroup>
 </Project>

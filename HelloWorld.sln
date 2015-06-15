@@ -7,6 +7,11 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Sources\Setup\Setu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "Sources\TestProject\TestProject.csproj", "{8E473214-CC51-461D-99F7-C9E442AB4DBB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{2A50ADD5-38F0-4318-A610-D4341C96CFBC}"
+	ProjectSection(SolutionItems) = preProject
+		Sources\GlobalAssemblyInfo.cs = Sources\GlobalAssemblyInfo.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
