@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5" DefaultTargets="HeatTarget">
+
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+    <Platform Condition="'$(Platform)' == ''">x86</Platform>
+
+    <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>
+    <WixToolPath>$(SolutionDir)packages\WiX.Toolset.3.9.1208.0\tools\wix\</WixToolPath>
+
+    <OutputName Condition="'$(OutputName)' == ''">AnythingYouWant</OutputName>
+    <OutputPath Condition="'$(OutputPath)' == ''">AnythingYouWant</OutputPath>
+  </PropertyGroup>
+
+  <Import Project="$(WixToolPath)\Wix.targets" />
+
+  <ItemGroup>
+    <!--    <FolderItem Include="Gumba">-->
+    <!--      <SourcesDirectory>$(SolutionDir)Source\Gumba.Setup\</SourcesDirectory>-->
+    <!--      <BinaryDirectory>$(SolutionDir)Out\$(Configuration)\Gumba.Console\</BinaryDirectory>-->
+    <!--      -->
+    <!--      <OutputFilePath>%(SourcesDirectory)ComponentGroups\Gumba2.wxs</OutputFilePath>-->
+    <!--      -->
+    <!--      <TransformsDirectories>%(SourcesDirectory)Transforms\</TransformsDirectories>-->
+    <!--      -->
+    <!--      <ComponentGroupName>MyComponent</ComponentGroupName>-->
+    <!--      <VarSourceDirectory>var.GumbaSourcesDir</VarSourceDirectory>-->
+    <!--      <TargetDirectory>INSTALLFOLDER</TargetDirectory>-->
+    <!--    </FolderItem>-->
+    <FolderItem Include="HufferTerminal">
+      <SourcesDirectory>$(SolutionDir)Source\Tengu.Setup\</SourcesDirectory>
+      <BinaryDirectory>$(SolutionDir)Out\$(Configuration)\Huffer.Terminal\</BinaryDirectory>
+      <OutputFilePath>%(SourcesDirectory)ComponentGroups\HufferTerminal.wxs</OutputFilePath>
+      <TransformsDirectories>%(SourcesDirectory)Transforms\</TransformsDirectories>
+      <ComponentGroupName>HufferTerminal</ComponentGroupName>
+      <VarSourceDirectory>var.HufferSourcesDir</VarSourceDirectory>
+      <TargetDirectory>HUFFER_TERMINAL_DIR</TargetDirectory>
+    </FolderItem>
+    <FolderItem Include="TenguEndpoint">
+      <SourcesDirectory>$(SolutionDir)Source\Tengu.Setup\</SourcesDirectory>
+      <BinaryDirectory>$(SolutionDir)Out\$(Configuration)\Tengu.Endpoint\</BinaryDirectory>
+      <OutputFilePath>%(SourcesDirectory)ComponentGroups\TenguEndpoint.wxs</OutputFilePath>
+      <TransformsDirectories>%(SourcesDirectory)Transforms\</TransformsDirectories>
+      <ComponentGroupName>TenguEndpoint</ComponentGroupName>
+      <VarSourceDirectory>var.EndpointSourcesDir</VarSourceDirectory>
+      <TargetDirectory>TENGU_ENDPOINT_DIR</TargetDirectory>
+    </FolderItem>
+    <FolderItem Include="TenguPublicationService">
+      <SourcesDirectory>$(SolutionDir)Source\Tengu.Setup\</SourcesDirectory>
+      <BinaryDirectory>$(SolutionDir)Out\$(Configuration)\Tengu.PublicationService\</BinaryDirectory>
+      <OutputFilePath>%(SourcesDirectory)ComponentGroups\TenguPublicationService.wxs</OutputFilePath>
+      <TransformsDirectories>%(SourcesDirectory)Transforms\</TransformsDirectories>
+      <ComponentGroupName>TenguPublicationService</ComponentGroupName>
+      <VarSourceDirectory>var.PublicationServiceSourcesDir</VarSourceDirectory>
+      <TargetDirectory>TENGU_PUBLICATIONSERVICE_DIR</TargetDirectory>
+    </FolderItem>
+    <FolderItem Include="TenguTerminal">
+      <SourcesDirectory>$(SolutionDir)Source\Tengu.Setup\</SourcesDirectory>
+      <BinaryDirectory>$(SolutionDir)Out\$(Configuration)\Tengu.Terminal\</BinaryDirectory>
+      <OutputFilePath>%(SourcesDirectory)ComponentGroups\TenguTerminal.wxs</OutputFilePath>
+      <TransformsDirectories>%(SourcesDirectory)Transforms\</TransformsDirectories>
+      <ComponentGroupName>TenguTerminal</ComponentGroupName>
+      <VarSourceDirectory>var.TenguSourcesDir</VarSourceDirectory>
+      <TargetDirectory>TENGU_TERMINAL_DIR</TargetDirectory>
+    </FolderItem>
+    <FolderItem Include="LapuSite">
+      <SourcesDirectory>$(SolutionDir)Source\Tengu.Setup\</SourcesDirectory>
+      <BinaryDirectory>$(SolutionDir)Out\$(Configuration)\Lapu2.Site\</BinaryDirectory>
+      <OutputFilePath>%(SourcesDirectory)ComponentGroups\LapuSite.wxs</OutputFilePath>
+      <TransformsDirectories>%(SourcesDirectory)Transforms\</TransformsDirectories>
+      <ComponentGroupName>LapuSite</ComponentGroupName>
+      <VarSourceDirectory>var.LapuSiteSourcesDir</VarSourceDirectory>
+      <TargetDirectory>LAPU_SITE_DIR</TargetDirectory>
+    </FolderItem>
+  </ItemGroup>
+
+
+  <Target Name="HeatTarget">
+
+    <ItemGroup>
+      <TransformFiles Include="%(FolderItem.TransformsDirectories)**\*"></TransformFiles>
+    </ItemGroup>
+
+    <!--Newline in msbuild message corresponds to "%0a"-->
+
+    <Message Text="Transforms: %0a@(TransformFiles)%0a" Importance="high"></Message>
+    <Message Text="OutputFile: %0a%(FolderItem.OutputFilePath)%0a" Importance="high"></Message>
+    <Message Text="ComponentGroupName: %0a%(FolderItem.ComponentGroupName)%0a" Importance="high"></Message>
+
+	<!--http://wixtoolset.org/documentation/manual/v3/msbuild/task_reference/heatdirectory.html-->
+
+    <HeatDirectory
+      NoLogo="true"
+      ToolPath="$(WixToolPath)"
+      VerboseOutput="true"
+      AutogenerateGuids="false"
+      GenerateGuidsNow="true"
+      OutputFile="%(FolderItem.OutputFilePath)"
+      Directory="%(FolderItem.BinaryDirectory)"
+      ComponentGroupName="%(FolderItem.ComponentGroupName)"
+      KeepEmptyDirectories="true"
+      PreprocessorVariable="%(FolderItem.VarSourceDirectory)"
+      Transforms="@(TransformFiles)"
+      SuppressRegistry="true"
+      DirectoryRefId="%(FolderItem.TargetDirectory)"
+      SuppressRootDirectory="true" />
+  </Target>
+</Project>
