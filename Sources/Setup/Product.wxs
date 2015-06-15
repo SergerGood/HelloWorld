@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Setup" Language="1033" Version="1.0.0.0" Manufacturer="Company" UpgradeCode="9be31712-cf36-48d4-b4ba-d379dc643c99">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<Media Id="1" Cabinet="setup.cab" EmbedCab="yes"/>
+
+		<Feature Id="ProductFeature" Title="Setup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="HelloWorld" />
+			</Directory>
+		</Directory>
+	</Fragment>
+  
+  <Fragment>
+    <ComponentGroup Id="ProductComponents">
+      <ComponentGroupRef Id="ProductComponents.Files"/>
+    </ComponentGroup>
+  </Fragment>
+  
+  <Fragment>
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Directory Id="ProductComponentsDir"  ComponentGuidGenerationSeed="DBA8384E-CE1B-41af-B573-4203FB8A6A3B">
+        <Directory Id="ProductComponents.Files" />
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

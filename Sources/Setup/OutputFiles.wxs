@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="ProductComponents.Files">
+            <Component Id="ProductComponents.cmpC7145D9017F2CD2CAA5B8634F5E8644F" Guid="{E80E8576-ED69-4750-A48F-7210B0D9D078}">
+                <File Id="ProductComponents.fil7D143D160A9758210BD278CB45D6681C" Source="$(var.SolutionDir)Out\$(var.Configuration)\HelloWorld\HelloWorld.exe" />
+            </Component>
+            <Component Id="ProductComponents.cmp4DAE8CA89AFEFB252B4B638CF3120F15" Guid="{7D8BD979-CADF-4856-9C4D-B9A56183E604}">
+                <File Id="ProductComponents.filD5B886710DF7AF4C681A2F1DFC8F41C6" Source="$(var.SolutionDir)Out\$(var.Configuration)\HelloWorld\HelloWorld.exe.config" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="ProductComponents.Files">
+            <ComponentRef Id="ProductComponents.cmpC7145D9017F2CD2CAA5B8634F5E8644F" />
+            <ComponentRef Id="ProductComponents.cmp4DAE8CA89AFEFB252B4B638CF3120F15" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>
