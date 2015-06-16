@@ -9,5 +9,6 @@ msbuild UnitTests.msbuild /p:Configuration=Release
 msbuild PrepareSetup.msbuild /p:Configuration=Release
 msbuild BuildSetup.msbuild /p:Configuration=Release
 msbuild Artifacts.msbuild /p:Configuration=Release
+msbuild IntegrityCheckCreator.msbuild /p:Configuration=Release
 
 pause
