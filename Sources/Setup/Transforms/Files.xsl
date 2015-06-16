@@ -5,7 +5,7 @@ xmlns:wix="http://schemas.microsoft.com/wix/2006/wi"
 xmlns="http://schemas.microsoft.com/wix/2006/wi" 
 exclude-result-prefixes="wix">
   <xsl:output method="xml" indent="yes"/>
-  <xsl:variable name="localpath">$(var.SolutionDir)Out\$(var.Configuration)\HelloWorld\</xsl:variable>
+  <xsl:variable name="localpath">..\..\Out\$(var.Configuration)\HelloWorld\</xsl:variable>
   <xsl:variable name="group-name">ProductComponents.</xsl:variable>
   <xsl:template match="wix:Wix">
     <xsl:variable name="binaries" select="wix:Fragment/wix:DirectoryRef/wix:Directory/wix:Component[(substring(wix:File/@Source, string-length(wix:File/@Source) - 5) = 'config' and not(contains(wix:File/@Source, 'vshost'))) or (substring(wix:File/@Source, string-length(wix:File/@Source) - 2) = 'exe' and not(contains(wix:File/@Source, 'vshost')))]"/>

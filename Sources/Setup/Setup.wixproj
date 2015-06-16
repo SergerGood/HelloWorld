@@ -30,7 +30,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Transforms\Files.xsl" />
-    <Content Include="Variables.wxi" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Transforms" />

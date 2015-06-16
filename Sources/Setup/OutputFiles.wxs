@@ -2,11 +2,11 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <DirectoryRef Id="ProductComponents.Files">
-            <Component Id="ProductComponents.cmpC7145D9017F2CD2CAA5B8634F5E8644F" Guid="{CA341C45-DDDA-4D11-A2E1-33F0849C730F}">
-                <File Id="ProductComponents.fil7D143D160A9758210BD278CB45D6681C" Source="$(var.SolutionDir)Out\$(var.Configuration)\HelloWorld\HelloWorld.exe" />
+            <Component Id="ProductComponents.cmpC7145D9017F2CD2CAA5B8634F5E8644F" Guid="{3D8B409C-546B-46D9-8B2C-075237C26436}">
+                <File Id="ProductComponents.fil7D143D160A9758210BD278CB45D6681C" Source="..\..\Out\$(var.Configuration)\HelloWorld\HelloWorld.exe" />
             </Component>
-            <Component Id="ProductComponents.cmp4DAE8CA89AFEFB252B4B638CF3120F15" Guid="{C128BA52-593A-475F-B613-6E4AE7FF10BA}">
-                <File Id="ProductComponents.filD5B886710DF7AF4C681A2F1DFC8F41C6" Source="$(var.SolutionDir)Out\$(var.Configuration)\HelloWorld\HelloWorld.exe.config" />
+            <Component Id="ProductComponents.cmp4DAE8CA89AFEFB252B4B638CF3120F15" Guid="{59D654CA-B85D-4D8F-B9CF-CD4103756DBC}">
+                <File Id="ProductComponents.filD5B886710DF7AF4C681A2F1DFC8F41C6" Source="..\..\Out\$(var.Configuration)\HelloWorld\HelloWorld.exe.config" />
             </Component>
         </DirectoryRef>
     </Fragment>

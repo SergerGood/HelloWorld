@@ -19,11 +19,8 @@
     <FolderItem Include="Setup">
       <SourcesDirectory>$(SolutionDir)Sources\Setup\</SourcesDirectory>
       <BinaryDirectory>$(SolutionDir)Out\$(Configuration)\HelloWorld\</BinaryDirectory>
-      <OutputFilePath>%(SourcesDirectory)\OutputFiles.wxs</OutputFilePath>
+      <OutputFilePath>%(SourcesDirectory)OutputFiles.wxs</OutputFilePath>
       <TransformsDirectories>%(SourcesDirectory)Transforms\</TransformsDirectories>
-      <ComponentGroupName>ProductComponents</ComponentGroupName>
-      <VarSourceDirectory>var.SourcesDir</VarSourceDirectory>
-      <!--<TargetDirectory>Setup</TargetDirectory>-->
     </FolderItem>
     
   </ItemGroup>
@@ -42,8 +39,7 @@
     <Message Text="ComponentGroupName: %0a%(FolderItem.ComponentGroupName)%0a" Importance="high"></Message>
 
 	<!--http://wixtoolset.org/documentation/manual/v3/msbuild/task_reference/heatdirectory.html-->
-    
-<!--ComponentGroupName="%(FolderItem.ComponentGroupName)"   DirectoryRefId="%(FolderItem.TargetDirectory)"-->
+  
     <HeatDirectory
       NoLogo="true"
       ToolPath="$(WixToolPath)"
@@ -52,10 +48,9 @@
       GenerateGuidsNow="true"
       OutputFile="%(FolderItem.OutputFilePath)"
       Directory="%(FolderItem.BinaryDirectory)"
-      KeepEmptyDirectories="true"
       PreprocessorVariable="%(FolderItem.VarSourceDirectory)"
       Transforms="@(TransformFiles)"
       SuppressRegistry="true"
-      SuppressRootDirectory="true" />
+      SuppressFragments ="true"/>
   </Target>
 </Project>
