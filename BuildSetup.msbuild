@@ -5,8 +5,8 @@
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Platform Condition="'$(Platform)' == ''">x86</Platform>
 
-    <RestorePackagesCommand>$(MSBuildThisFileDirectory)..\.nuget\nuget.exe restore</RestorePackagesCommand>
-    <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)..\</SolutionDir>
+    <RestorePackagesCommand>$(MSBuildThisFileDirectory).nuget\nuget.exe restore</RestorePackagesCommand>
+    <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>
     <DefineSolutionProperties>false</DefineSolutionProperties>
   </PropertyGroup>
 
@@ -50,6 +50,7 @@
   </Target>
 
   <Target Name="Rebuild" DependsOnTargets="RestorePackages">
+       
     <Message Text="@(ProjectsToBuild)" ></Message>
 
     <MSBuild Projects="@(ProjectsToBuild)"

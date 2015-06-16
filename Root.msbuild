@@ -23,7 +23,7 @@
 
     <Target Name="Version">
         <AssemblyInfo CodeLanguage="CS"
-                      OutputFile="$(MSBuildProjectDirectory)\..\Sources\GlobalAssemblyInfo.cs"
+                      OutputFile="$(MSBuildProjectDirectory)\Sources\GlobalAssemblyInfo.cs"
                       AssemblyProduct="$(ProductInfo)"
                       AssemblyCompany="$(CompanyInfo)"
                       AssemblyCopyright="$(CopyrightInfo)"
@@ -35,6 +35,6 @@
     </Target>
 
     <ItemGroup>
-        <Solution Include="..\HelloWorld.sln" />
+        <Solution Include="HelloWorld.sln" />
     </ItemGroup>
 </Project>

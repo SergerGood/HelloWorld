@@ -6,7 +6,7 @@
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Platform Condition="'$(Platform)' == ''">x86</Platform>
 
-    <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)..\</SolutionDir>
+    <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>
     <WixToolPath>$(SolutionDir)packages\WiX.Toolset.3.9.1208.0\tools\wix\</WixToolPath>
 
     <OutputName Condition="'$(OutputName)' == ''">AnythingYouWant</OutputName>
