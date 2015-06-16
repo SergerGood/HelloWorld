@@ -48,3 +48,4 @@ Sources/HelloWorld/bin/
 Sources/HelloWorld/obj/
 Sources/TestProject/obj/
 Sources/TestProject/bin/
+*.suo
